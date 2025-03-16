@@ -1,4 +1,5 @@
 import React from "react";
+import { ClerkProvider, ClerkLoaded } from "@clerk/clerk-expo";
 import { Stack } from "expo-router";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
@@ -15,12 +16,24 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
  *
  * @returns A layout wrapper with proper safe area handling and navigation stack
  */
+const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!;
+
+if (!publishableKey) {
+  throw new Error(
+    "Missing Publishable Key. Please set EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY in your .env"
+  );
+}
+
 export default function RootLayout() {
   return (
-    <SafeAreaProvider>
-      <SafeAreaView style={{ flex: 1, backgroundColor: "#adb5bd" }}>
-        <Stack screenOptions={{ headerShown: false }} />
-      </SafeAreaView>
-    </SafeAreaProvider>
+    <ClerkProvider publishableKey={publishableKey}>
+      <ClerkLoaded>
+        <SafeAreaProvider>
+          <SafeAreaView style={{ flex: 1, backgroundColor: "#adb5bd" }}>
+            <Stack screenOptions={{ headerShown: false }} />
+          </SafeAreaView>
+        </SafeAreaProvider>
+      </ClerkLoaded>
+    </ClerkProvider>
   );
 }
