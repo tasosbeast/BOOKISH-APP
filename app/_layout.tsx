@@ -2,6 +2,7 @@ import React from "react";
 import { ClerkProvider, ClerkLoaded } from "@clerk/clerk-expo";
 import { Stack } from "expo-router";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { tokenCache } from "@/cache";
 
 /**
  * This file is the starting point of your app's navigation structure - think of it as the foundation
@@ -26,7 +27,7 @@ if (!publishableKey) {
 
 export default function RootLayout() {
   return (
-    <ClerkProvider publishableKey={publishableKey}>
+    <ClerkProvider tokenCache={tokenCache} publishableKey={publishableKey}>
       <ClerkLoaded>
         <SafeAreaProvider>
           <SafeAreaView style={{ flex: 1, backgroundColor: "#adb5bd" }}>
