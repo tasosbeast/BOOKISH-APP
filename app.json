@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "BOOKISH-APP",
-    "slug": "BOOKISH-APP",
+    "slug": "bookish-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -36,6 +36,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "e3ed8793-c257-4b8e-99fd-a7d4760fc31e"
+      }
+    },
+    "owner": "tasosbeast"
   }
 }
