@@ -2,6 +2,12 @@
   "expo": {
     "name": "BOOKISH-APP",
     "slug": "bookish-app",
+    "fonts": [
+      {
+        "asset": "./assets/fonts/Modak-Regular.ttf",
+        "family": "Modak"
+      }
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -32,7 +38,8 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "expo-font"
     ],
     "experiments": {
       "typedRoutes": true
