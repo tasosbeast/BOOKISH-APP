@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import styles from "../../styles/auth.style";
+import { styles } from "@/styles/auth.style";
 import { Link } from "expo-router";
 
 /**
