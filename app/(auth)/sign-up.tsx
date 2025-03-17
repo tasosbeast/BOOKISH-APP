@@ -103,6 +103,7 @@ export default function SignUpScreen() {
           style={styles.input}
           value={code}
           placeholder="Enter your verification code"
+          placeholderTextColor="#7a9cc6" // Brighter placeholder text color
           onChangeText={(code) => setCode(code)}
         />
 
@@ -140,6 +141,7 @@ export default function SignUpScreen() {
         autoCapitalize="none"
         value={emailAddress}
         placeholder="Enter email"
+        placeholderTextColor="#c1bdba" // Brighter placeholder text color
         onChangeText={(email) => setEmailAddress(email)}
       />
 
@@ -150,6 +152,7 @@ export default function SignUpScreen() {
         style={styles.input}
         value={password}
         placeholder="Enter password"
+        placeholderTextColor="#c1bdba" // Brighter placeholder text color
         secureTextEntry={true}
         onChangeText={(password) => setPassword(password)}
       />
