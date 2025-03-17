@@ -1,7 +1,7 @@
 // Import necessary hooks and components from Clerk, Expo Router, and React Native
 import { useSignIn } from "@clerk/clerk-expo"; // Hook to manage sign-in functionalities using Clerk
 import { Link, useRouter } from "expo-router"; // Components for navigation using Expo Router
-import { Text, TextInput, View, TouchableOpacity } from "react-native"; // UI components from React Native
+import { Text, TextInput, View, TouchableOpacity, Image } from "react-native"; // UI components from React Native
 import React from "react"; // Import React library for component building
 import { styles } from "@/styles/auth.style"; // Import styling for authentication screens
 
@@ -49,28 +49,64 @@ export default function Page() {
   return (
     // Main container view for the sign-in page
     <View style={styles.container}>
-      {/* Group of buttons for sign in and sign up actions */}
-      <View style={styles.buttonGroup}>
-        {/* Touchable button that triggers the sign-in process */}
-        <TouchableOpacity style={styles.button} onPress={onSignInPress}>
-          <Text style={styles.buttonText}>Sign in</Text>
-        </TouchableOpacity>
-        {/* Link to the sign-up page wrapped around a touchable button */}
-        <Link href="/sign-up" asChild>
-          <TouchableOpacity style={[styles.button]}>
-            <Text style={styles.buttonText}>Sign up</Text>
-          </TouchableOpacity>
-        </Link>
+      {/* App logo or authentication image */}
+      <Image
+        source={require("@/assets/images/Bibliophile-amico.png")}
+        style={{ width: 150, height: 150, marginBottom: 20 }}
+        resizeMode="contain"
+      />
+
+      {/* Text header for the sign-in page */}
+      <View style={styles.headerContainer}>
+        <Text style={styles.header}>Sign in to Bookish</Text>
+        <Text style={styles.subheader}>
+          Welcome back! Please sign in to continue
+        </Text>
+      </View>
+
+      {/* Google Sign-In Button */}
+      <TouchableOpacity
+        style={[
+          styles.button,
+          {
+            backgroundColor: "#fff",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+            borderWidth: 1,
+            borderColor: "#ddd",
+          },
+        ]}
+        onPress={() => console.log("Google Sign In pressed")}
+      >
+        <Image
+          source={require("@/assets/images/google-icon.png")}
+          style={{ width: 30, height: 30, marginRight: 10 }}
+          resizeMode="contain"
+        />
+        <Text style={[styles.buttonText, { color: "#333" }]}>Google</Text>
+      </TouchableOpacity>
+
+      {/* Divider with OR text */}
+      <View style={styles.dividerContainer}>
+        <View style={styles.dividerLine} />
+        <Text style={styles.dividerText}>OR</Text>
+        <View style={styles.dividerLine} />
       </View>
 
       {/* Input field for entering the email address */}
-      <TextInput
-        autoCapitalize="none"
-        value={emailAddress} // Binds the emailAddress state to the input value
-        placeholder="Enter email" // Placeholder text
-        onChangeText={(emailAddress) => setEmailAddress(emailAddress)} // Update state on text change
-      />
+      <View>
+        <Text style={styles.inputLabel}>Email</Text>
+        <TextInput
+          style={styles.input} // Apply custom styling
+          autoCapitalize="none"
+          value={emailAddress} // Binds the emailAddress state to the input value
+          placeholder="Enter email" // Placeholder text
+          onChangeText={(emailAddress) => setEmailAddress(emailAddress)} // Update state on text change
+        />
+      </View>
       {/* Input field for entering the password */}
+      <Text style={styles.inputLabel}>Password</Text>
       <TextInput
         style={styles.input} // Apply custom styling
         value={password} // Binds the password state to the input value
@@ -78,6 +114,20 @@ export default function Page() {
         secureTextEntry={true} // Hides the text input for security
         onChangeText={(password) => setPassword(password)} // Update state on text change
       />
+      {/* Touchable button that triggers the sign-in process */}
+      <TouchableOpacity style={styles.button} onPress={onSignInPress}>
+        <Text style={styles.buttonText}>Sign in</Text>
+      </TouchableOpacity>
+
+      {/* Text link to the sign-up page */}
+      <View style={styles.signupContainer}>
+        <Text style={styles.signupText}>Don't have an account?</Text>
+        <Link href="/sign-up" asChild>
+          <TouchableOpacity>
+            <Text style={styles.signupLink}> Sign up</Text>
+          </TouchableOpacity>
+        </Link>
+      </View>
     </View>
   );
 }
