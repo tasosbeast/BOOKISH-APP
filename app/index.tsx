@@ -14,9 +14,15 @@
  *
  * @returns A redirect component that navigates to the tabs interface
  */
+
+// Import React to define our component
 import React from "react";
+// Import the Redirect component from Expo Router to programmatically navigate
 import { Redirect } from "expo-router";
 
+// Define the Index component that handles the redirection from the root path
 export default function Index() {
+  // The Redirect component sends the user to the specified route immediately.
+  // In this case, it navigates to the '/(auth)/login' route.
   return <Redirect href="/(auth)/login" />;
 }
